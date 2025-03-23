@@ -7,7 +7,7 @@ Bienvenue dans ce projet Symfony permettant de gérer une clinique vétérinaire
 ``` git clone git@github.com:alyssialopr/API-platform.git```
 
 2. Entrer dans le projet
-````cd API-platform```
+``` cd API-platform ```
 
 3. Installer les dépendances afin d'avoir un projet fonctionnel
 ```composer install```
