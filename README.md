@@ -31,5 +31,5 @@ Afin que les vétérinaires, assistants et directeur puissent voir les rendez-vo
 ```https://127.0.0.1:8000/api/appointments?apDate[after]=2025-01-01&apDate[strictly_before]=2025-12-12```
 
 ## 👥 Membres du projet
-Léora Chriqui
-Alyssia Lorsold Pradon
+* [Léora CHRIQUI](https://github.com/Leoratz) 
+* [Alyssia LORSOLD PRADON](https://github.com/alyssialopr)
