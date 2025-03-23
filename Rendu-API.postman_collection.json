@@ -1,0 +1,722 @@
+{
+	"info": {
+		"_postman_id": "1abfd3cf-be19-481d-9e19-58f405ac82b8",
+		"name": "Rendu-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33050484"
+	},
+	"item": [
+		{
+			"name": "Animal",
+			"item": [
+				{
+					"name": "Get Animal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8000/api/animals",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"animals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post animal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3Mjg3MTIsImV4cCI6MTc0MjczMjMxMiwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZ21haWwuY29tIn0.bXTntw4uuZCxjZtAaE9eNRsp4ccSOMWLSKzi6XlG19lIVDUV2HUAyBsMmzsER_PoQOiQETaC2P8oSq5ZRfBjHK5p6QF-42hGStDFLI1Tf00xuf3GATWegs32fsNku92_42LRuKBzp47L45CGL4F_Sn12TLzjHIV2H42nvzt-IUWWgrl_zBl4OpDiGMOTVAia9M90svR-PgkbbfLpyPABArlK2VS0wQhsioseVAUehF2gYOYFq1piUsD2FVkHrh5duOamzrSW2tElu27gJlnYJtdRB4hUJwvBqZUogREWqJuvkzXhc--bzdxhrgok-nsmGvkU8jFtkZ96gZp_bi3wPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"titi\",\r\n  \"species\": \"labrador\",\r\n  \"birthDate\": \"2024-04-21T13:30:03.831Z\",\r\n  \"owner\": \"api/clients/1\",\r\n  \"media\": \"api/media/5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/animals",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"animals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Animal",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"tata\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/animals/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"animals",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Animal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"titi\",\r\n  \"species\": \"Labrador\",\r\n  \"birthDate\": \"2023-04-21T13:11:07.572Z\",\r\n  \"media\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/animals/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"animals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Post Media",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1f007dde-2f18-4010-a47e-d1834004123a"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/media",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8000/api/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"vet2@gmail.com\",\r\n  \"plainPassword\": \"123\",\r\n  \"firstName\": \"vet\",\r\n  \"lastName\": \"deux\",\r\n  \"roles\" : [\r\n    \"ROLE_VETERINARIAN\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/users/5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/users/7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "Get Appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3MzE3NTksImV4cCI6MTc0MjczNTM1OSwicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRAZ21haWwuY29tIn0.Wx-ffP5U28k3SREc_1EyMNVVqV6fI7Aw78VS6UdTm6u2WF9PTXG1QaQQK3dBVzV1cLWWblPo66V5oI2OI4Huh-eprbWA46ufC4dy3Izf5pKFEa52Kb7aeNxPtqh5JsRQlnzwS4Mltaai_4PXt1XZqG56vW-auMe9EklXCqbRegAagcxSKz-IHtbYgnSuqWMJLfaf5IzbZYAiHqandlN7Zud4lr5wZVaiCVu9D7Vo3IhGzhtPZXJZnj7qDiTxIMtrrNh3g3k_TRkPbIJmk3-g9Amkwb9_nCPiQqUQiljol11messrNgc4xtpOcsUFJVW8WByDziKwoNlJWtKgH8gLZw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8000/api/appointments?apDate=2024-03-21",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointments"
+							],
+							"query": [
+								{
+									"key": "apDate",
+									"value": "2024-03-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3Mjg3MTIsImV4cCI6MTc0MjczMjMxMiwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZ21haWwuY29tIn0.bXTntw4uuZCxjZtAaE9eNRsp4ccSOMWLSKzi6XlG19lIVDUV2HUAyBsMmzsER_PoQOiQETaC2P8oSq5ZRfBjHK5p6QF-42hGStDFLI1Tf00xuf3GATWegs32fsNku92_42LRuKBzp47L45CGL4F_Sn12TLzjHIV2H42nvzt-IUWWgrl_zBl4OpDiGMOTVAia9M90svR-PgkbbfLpyPABArlK2VS0wQhsioseVAUehF2gYOYFq1piUsD2FVkHrh5duOamzrSW2tElu27gJlnYJtdRB4hUJwvBqZUogREWqJuvkzXhc--bzdxhrgok-nsmGvkU8jFtkZ96gZp_bi3wPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apDate\": \"2025-03-22T14:22:58+00:00\",\r\n    \"motive\": \"ça marche le paiement ?\",\r\n    \"animal\": \"api/animals/2\",\r\n    \"assistant\": \"api/users/2\",\r\n    \"vet\":\"api/users/3\",\r\n    \"status\": \"En cours\",\r\n    \"treatments\": [],\r\n    \"payment\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/appointments",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3Mjg3MTIsImV4cCI6MTc0MjczMjMxMiwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZ21haWwuY29tIn0.bXTntw4uuZCxjZtAaE9eNRsp4ccSOMWLSKzi6XlG19lIVDUV2HUAyBsMmzsER_PoQOiQETaC2P8oSq5ZRfBjHK5p6QF-42hGStDFLI1Tf00xuf3GATWegs32fsNku92_42LRuKBzp47L45CGL4F_Sn12TLzjHIV2H42nvzt-IUWWgrl_zBl4OpDiGMOTVAia9M90svR-PgkbbfLpyPABArlK2VS0wQhsioseVAUehF2gYOYFq1piUsD2FVkHrh5duOamzrSW2tElu27gJlnYJtdRB4hUJwvBqZUogREWqJuvkzXhc--bzdxhrgok-nsmGvkU8jFtkZ96gZp_bi3wPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"payment\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/appointments/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3Mjg3MTIsImV4cCI6MTc0MjczMjMxMiwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZ21haWwuY29tIn0.bXTntw4uuZCxjZtAaE9eNRsp4ccSOMWLSKzi6XlG19lIVDUV2HUAyBsMmzsER_PoQOiQETaC2P8oSq5ZRfBjHK5p6QF-42hGStDFLI1Tf00xuf3GATWegs32fsNku92_42LRuKBzp47L45CGL4F_Sn12TLzjHIV2H42nvzt-IUWWgrl_zBl4OpDiGMOTVAia9M90svR-PgkbbfLpyPABArlK2VS0wQhsioseVAUehF2gYOYFq1piUsD2FVkHrh5duOamzrSW2tElu27gJlnYJtdRB4hUJwvBqZUogREWqJuvkzXhc--bzdxhrgok-nsmGvkU8jFtkZ96gZp_bi3wPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"payment\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/appointments/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Treatment",
+			"item": [
+				{
+					"name": "Get Treatment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI1NzExMjIsImV4cCI6MTc0MjU3NDcyMiwicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRAZ21haWwuY29tIn0.kQIa4-v425VdCN9aA30mTPmBLARSI5WPeYVBw_4O6c9Z39t1q0gzT62hproFcuKWd_HHs7go-IfVdR2KaZ-mjAez35IpQ_-GVNFMeDBRQSnN2srwt_54FTQ5IggfnHT_v4VFx6QqgXUlAbl7_5L9D4apeEG1KwR7oUVPr4kCc6LO-11qqOyMxvJxZhsv4LbmIeLNOFLiIlKwpVQFXfKF6yXm9vUdOMRQEB4vaNFxEg8wZ7U-eAaHqQ1Q8jx--3O6wHQvY7J1vvVHnQ3c8yNyP-xfmkb9E1g8mDq2rVa-grCf0aBuEKAN29254Wo96XKyBoVsyFVOMwhTA3QjvQklvg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8000/api/treatments",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"treatments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Treatment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI1NzExMjIsImV4cCI6MTc0MjU3NDcyMiwicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRAZ21haWwuY29tIn0.kQIa4-v425VdCN9aA30mTPmBLARSI5WPeYVBw_4O6c9Z39t1q0gzT62hproFcuKWd_HHs7go-IfVdR2KaZ-mjAez35IpQ_-GVNFMeDBRQSnN2srwt_54FTQ5IggfnHT_v4VFx6QqgXUlAbl7_5L9D4apeEG1KwR7oUVPr4kCc6LO-11qqOyMxvJxZhsv4LbmIeLNOFLiIlKwpVQFXfKF6yXm9vUdOMRQEB4vaNFxEg8wZ7U-eAaHqQ1Q8jx--3O6wHQvY7J1vvVHnQ3c8yNyP-xfmkb9E1g8mDq2rVa-grCf0aBuEKAN29254Wo96XKyBoVsyFVOMwhTA3QjvQklvg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"traitement 2\",\r\n  \"description\": \"ceci est une description\",\r\n  \"price\": 5,\r\n  \"duration\": \"2 jours\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/treatments",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"treatments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Treatment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI1NzExMjIsImV4cCI6MTc0MjU3NDcyMiwicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRAZ21haWwuY29tIn0.kQIa4-v425VdCN9aA30mTPmBLARSI5WPeYVBw_4O6c9Z39t1q0gzT62hproFcuKWd_HHs7go-IfVdR2KaZ-mjAez35IpQ_-GVNFMeDBRQSnN2srwt_54FTQ5IggfnHT_v4VFx6QqgXUlAbl7_5L9D4apeEG1KwR7oUVPr4kCc6LO-11qqOyMxvJxZhsv4LbmIeLNOFLiIlKwpVQFXfKF6yXm9vUdOMRQEB4vaNFxEg8wZ7U-eAaHqQ1Q8jx--3O6wHQvY7J1vvVHnQ3c8yNyP-xfmkb9E1g8mDq2rVa-grCf0aBuEKAN29254Wo96XKyBoVsyFVOMwhTA3QjvQklvg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"duration\": \"3 jours\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/treatments/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"treatments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Treatment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI1NzExMjIsImV4cCI6MTc0MjU3NDcyMiwicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRAZ21haWwuY29tIn0.kQIa4-v425VdCN9aA30mTPmBLARSI5WPeYVBw_4O6c9Z39t1q0gzT62hproFcuKWd_HHs7go-IfVdR2KaZ-mjAez35IpQ_-GVNFMeDBRQSnN2srwt_54FTQ5IggfnHT_v4VFx6QqgXUlAbl7_5L9D4apeEG1KwR7oUVPr4kCc6LO-11qqOyMxvJxZhsv4LbmIeLNOFLiIlKwpVQFXfKF6yXm9vUdOMRQEB4vaNFxEg8wZ7U-eAaHqQ1Q8jx--3O6wHQvY7J1vvVHnQ3c8yNyP-xfmkb9E1g8mDq2rVa-grCf0aBuEKAN29254Wo96XKyBoVsyFVOMwhTA3QjvQklvg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/treatments/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"treatments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Get Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8000/api/clients",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\" : \"caca\",\r\n    \"lastName\" : \"noah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8000/api/clients",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"vet@gmail.com\",\r\n    \"password\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8000/api/auth",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
