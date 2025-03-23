@@ -26,11 +26,28 @@ use App\State\UserPasswordHasherProcessor;
     normalizationContext: ['groups' => ['read']],
     denormalizationContext: ['groups' => ['write']],
     operations:[
-        new GetCollection(),
-        new Post(processor: UserPasswordHasherProcessor::class),
-        new Get(),
-        new Patch(processor: UserPasswordHasherProcessor::class),
-        new Delete(),
+        new GetCollection(
+            security: "is_granted('ROLE_DIRECTOR')",
+            securityMessage: "Only directors can access this resource."
+        ),
+        new Post(
+            processor: UserPasswordHasherProcessor::class,
+            security: "is_granted('ROLE_DIRECTOR')",
+            securityMessage: "Only directors can access this resource."
+        ),
+        new Get(
+            security: "is_granted('ROLE_DIRECTOR')",
+            securityMessage: "Only directors or can access this resource."
+        ),
+        new Patch(
+            processor: UserPasswordHasherProcessor::class,
+            security: "is_granted('ROLE_DIRECTOR')",
+            securityMessage: "Only directors can access this resource."
+        ),
+        new Delete(
+            security: "is_granted('ROLE_DIRECTOR')",
+            securityMessage: "Only directors can access this resource."
+        ),
     ]
 )]
 

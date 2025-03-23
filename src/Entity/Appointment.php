@@ -18,6 +18,8 @@ use ApiPlatform\Metadata\Delete;
 
 use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Attribute\Groups;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 
 #[ORM\Entity(repositoryClass: AppointmentRepository::class)]
 
@@ -34,18 +36,30 @@ use Symfony\Component\Serializer\Attribute\Groups;
             security: "is_granted('ROLE_ASSISTANT') or is_granted('ROLE_VETERINARIAN')",
             securityMessage: "Only assistants can access this resource"
         ),
-        new Post(),
+        new Post(
+            security: "is_granted('ROLE_ASSISTANT')",
+            securityMessage: "Only assistants can access this resource",
+            denormalizationContext: ['groups' => ['assistant:write']]
+        ),
         new Patch(
+            security: "is_granted('ROLE_ASSISTANT') and object.getStatus().value != 'Terminé'",
+            securityMessage: "Only assistants can update non-finished appointments",
+            denormalizationContext: ['groups' => ['assistant:write']]
+        ),
+        new Patch(
+            uriTemplate: '/appointments/{id}/vet-status',
+            security: "is_granted('ROLE_VETERINARIAN')",
+            securityMessage: "Only veterinarians can access this resource",
+            denormalizationContext: ['groups' => ['vet:write']],
+            name: 'patch_vet_status'
+        ),
+        new Delete(
             security: "is_granted('ROLE_ASSISTANT')",
             securityMessage: "Only assistants can access this resource"
         ),
-        new Delete(
-            security: "is_granted('ROLE_VETERINARIAN')",
-            securityMessage: "Only veterinarians can access this resource"
-        ),
     ]
 )]
-
+#[ApiFilter(DateFilter::class, properties: ['apDate'])]
 class Appointment
 {
     #[ORM\Id]
@@ -59,44 +73,46 @@ class Appointment
     private ?\DateTimeInterface $createdDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write'])]
     private ?\DateTimeInterface $apDate = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write'])]
     private ?string $motive = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write'])]
 
     private ?Animal $animal = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write'])]
     private ?User $assistant = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write', 'vet:write'])]
     private ?User $vet = null;
 
     #[ORM\Column(type: 'string', length: 255, enumType: AppointmentStatus::class)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write', 'vet:write'])]
     private ?AppointmentStatus $status = null;
 
     /**
      * @var Collection<int, Treatment>
      */
     #[ORM\ManyToMany(targetEntity: Treatment::class)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['read', 'assistant:write'])]
     private Collection $treatments;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['read', 'assistant:write'])]
     private ?bool $paymentStatus = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['read', 'assistant:write'])]
     private ?float $payment = null;
 
     public function __construct()
@@ -242,6 +258,10 @@ class Appointment
     public function setPayment(?float $payment): static
     {
         $this->payment = $payment;
+
+        if ($payment !== null && $payment > 0) {
+            $this->paymentStatus = true;
+        }
 
         return $this;
     }
